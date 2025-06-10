@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Compras</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+  <h1>Dashboard de Compras</h1>
+  <div class="file-input">
+    <input type="file" id="csvFile" accept=".csv">
+  </div>
+  <nav id="tabs">
+    <button data-tab="tab1" class="active">Resumen Ejecutivo</button>
+    <button data-tab="tab2">Análisis de Compradores</button>
+    <button data-tab="tab3">Proveedores y Concentración</button>
+    <button data-tab="tab4">Precios y Valor Neto</button>
+    <button data-tab="tab5">Seguimiento de Órdenes</button>
+  </nav>
+  <section id="tab1" class="tab-content active">
+    <div class="stats">
+      <div>Total Gastado: <span id="totalGasto"></span></div>
+      <div>Total OCs: <span id="totalOCs"></span></div>
+      <div>Total Ítems: <span id="totalItems"></span></div>
+    </div>
+    <div class="filters">
+      <select id="filtroMes"></select>
+      <select id="filtroFamilia"></select>
+      <select id="filtroGrupo"></select>
+    </div>
+    <canvas id="chartFamilia"></canvas>
+    <canvas id="chartGrupo"></canvas>
+    <canvas id="chartMensual"></canvas>
+  </section>
+  <section id="tab2" class="tab-content">
+    <div class="filters">
+      <select id="filtroComprador"></select>
+      <select id="filtroFamilia2"></select>
+      <select id="filtroMes2"></select>
+    </div>
+    <canvas id="chartRankingCompradores"></canvas>
+    <canvas id="chartPieCompradores"></canvas>
+    <canvas id="chartStackCompradores"></canvas>
+    <table id="tablaCompradores" class="display"></table>
+  </section>
+  <section id="tab3" class="tab-content">
+    <div class="filters">
+      <select id="filtroProveedor"></select>
+      <select id="filtroFamilia3"></select>
+    </div>
+    <canvas id="chartTopProveedores"></canvas>
+    <canvas id="chartPieProveedores"></canvas>
+    <canvas id="chartScatterProveedores"></canvas>
+    <table id="tablaProveedores" class="display"></table>
+  </section>
+  <section id="tab4" class="tab-content">
+    <div class="filters">
+      <select id="filtroGrupo4"></select>
+      <select id="filtroProveedor4"></select>
+    </div>
+    <canvas id="chartPrecioMaterial"></canvas>
+    <canvas id="chartPrecioComparacion"></canvas>
+    <canvas id="chartBoxGrupo"></canvas>
+    <table id="tablaPrecios" class="display"></table>
+  </section>
+  <section id="tab5" class="tab-content">
+    <div class="filters">
+      <select id="filtroMes5"></select>
+      <select id="filtroEstado5"></select>
+      <select id="filtroBorrado5"></select>
+    </div>
+    <div class="stats">
+      <div>Documentos por Estado: <span id="estadoConteo"></span></div>
+      <div>% Indicador Borrado: <span id="porcBorrado"></span></div>
+    </div>
+    <table id="tablaOrdenes" class="display"></table>
+  </section>
+  <script src="dashboard.js"></script>
+</body>
+</html>
